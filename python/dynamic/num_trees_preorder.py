@@ -27,15 +27,13 @@ def num_trees(num_nodes):
 
 
 def num_trees_recursive(num_nodes):
-    if num_nodes == 0 or num_nodes == 1:
+    if num_nodes in [0, 1]:
         return 1
 
-    result = 0
-
-    for n in range(1, num_nodes + 1):
-        result += num_trees_recursive(n - 1) * num_trees_recursive(num_nodes - n)
-
-    return result
+    return sum(
+        num_trees_recursive(n - 1) * num_trees_recursive(num_nodes - n)
+        for n in range(1, num_nodes + 1)
+    )
 
 
 

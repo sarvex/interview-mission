@@ -24,9 +24,8 @@ def minimum_spanning_tree(graph):
 
         if root1 == root2:
             continue
-        else:
-            result_edge.append(edge)
-            disjoint_set.union(edge.vertex1.id, edge.vertex2.id)
+        result_edge.append(edge)
+        disjoint_set.union(edge.vertex1.id, edge.vertex2.id)
 
     return result_edge
 

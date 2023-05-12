@@ -3,18 +3,14 @@
 def permute(input):
     count_map = {}
     for ch in input:
-        if ch in count_map.keys():
-            count_map[ch] = count_map[ch] + 1
-        else:
-            count_map[ch] = 1
-
+        count_map[ch] = count_map[ch] + 1 if ch in count_map else 1
     keys = sorted(count_map)
     str = []
     count = []
     for key in keys:
         str.append(key)
         count.append(count_map[key])
-    result = [0 for x in range(len(input))]
+    result = [0 for _ in range(len(input))]
     permute_util(str, count, result, 0)
 
 def permute_util(str, count, result, level):

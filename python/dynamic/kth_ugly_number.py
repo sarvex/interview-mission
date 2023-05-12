@@ -27,7 +27,7 @@ def ugly_number(kth):
         3: 0,
         5: 0}
 
-    for num in range(1, kth):
+    for _ in range(1, kth):
         minimal_factor = min(min(ugly_factors[factor_index[2]] * 2, ugly_factors[factor_index[3]] * 3),
                              ugly_factors[factor_index[5]] * 5)
 

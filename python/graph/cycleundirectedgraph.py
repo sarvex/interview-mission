@@ -9,8 +9,7 @@ def has_cycle_dfs(graph):
     for vertex in graph.all_vertex.values():
         if vertex in visited:
             continue
-        flag = has_cycle_dfs_util(vertex, visited, None)
-        if flag:
+        if flag := has_cycle_dfs_util(vertex, visited, None):
             return True
     return False        
 
@@ -21,8 +20,7 @@ def has_cycle_dfs_util(vertex, visited, parent):
             continue
         if adjacent in visited:
             return True
-        has_cycle = has_cycle_dfs_util(adjacent, visited, vertex)
-        if has_cycle:
+        if has_cycle := has_cycle_dfs_util(adjacent, visited, vertex):
             return True
     return False
 
@@ -53,5 +51,5 @@ if __name__ == '__main__':
 
     has_cycle1 = has_cycle_dfs(graph)
     has_cycle2 = has_cycle_using_disjoint_set(graph)
-    print(str(has_cycle1) + " " + str(has_cycle2))
+    print(f"{str(has_cycle1)} {str(has_cycle2)}")
         

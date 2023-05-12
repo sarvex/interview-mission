@@ -60,7 +60,7 @@ def knapsack_01_recursive_util(values, weights, remaining_weight, total_items, c
 
 
 def knapsack_01_recursive(values, weights, total_weight):
-    memo = dict()
+    memo = {}
     return knapsack_01_recursive_util(values, weights, total_weight, len(values), 0, memo)
 
 

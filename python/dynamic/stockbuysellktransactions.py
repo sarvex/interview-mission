@@ -53,8 +53,13 @@ def max_profit_slow_solution(prices, K):
             # This maximum value of either
             # a) No Transaction on the day. We pick the value from day - 1
             # b) Max profit made by selling on the day plus the cost of the previous transaction, considered over m days
-            T[transaction][day] = max(T[transaction][day - 1],
-                                      max([(prices[day] - prices[m] + T[transaction - 1][m]) for m in range(day)]))
+            T[transaction][day] = max(
+                T[transaction][day - 1],
+                max(
+                    prices[day] - prices[m] + T[transaction - 1][m]
+                    for m in range(day)
+                ),
+            )
 
     print_actual_solution(T, prices)
     return T[-1][-1]

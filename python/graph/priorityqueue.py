@@ -9,16 +9,10 @@ class PriorityQueue(object):
     def __init__(self, is_min_heap):
         self.pq = []
         self.entry_finder = {}
-        if(is_min_heap is True):
-            self.mul = 1
-        else :
-            self.mul = -1
+        self.mul = 1 if (is_min_heap is True) else -1
          
     def contains_task(self, task):
-        if task in self.entry_finder:
-            return True
-        else:
-            return False
+        return task in self.entry_finder
 
     def get_task_priority(self, task):
         if task in self.entry_finder:
@@ -68,7 +62,7 @@ class PriorityQueue(object):
             return True
 
     def __str__(self):
-        return str(self.entry_finder) + " " + str(self.pq)
+        return f"{str(self.entry_finder)} {str(self.pq)}"
         
 
 if __name__ == '__main__':

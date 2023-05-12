@@ -35,11 +35,7 @@ def evaluate_expression(expression_map, expression, result):
                     for expr2 in T[k+1][right_index]:
                         T[left_index][right_index].add(expression_map[(expr1, expr2)])
 
-    for expr in T[0][-1]:
-        if result in expr:
-            return True
-
-    return False
+    return any(result in expr for expr in T[0][-1])
 
 if __name__ == '__main__':
     expressions = ['a', 'b', 'c']

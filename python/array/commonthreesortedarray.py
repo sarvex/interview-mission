@@ -6,17 +6,17 @@ def common_elements(input1, input2, input3):
     j = 0
     k = 0
     while i < len(input1) and j < len(input2) and k < len(input3):
-        if input1[i] == input2[j] and input2[j] == input3[k]:
+        if input1[i] == input2[j] == input3[k]:
             result.append(input1[i])
-            i = i + 1
-            j = j + 1
-            k = k + 1
+            i += 1
+            j += 1
+            k += 1
         elif input1[i] < input2[j]:
-            i = i + 1
+            i += 1
         elif input2[j] < input3[k]:
-            j = j + 1
+            j += 1
         else:
-            k = k + 1
+            k += 1
     return result
 
 if __name__ == '__main__':

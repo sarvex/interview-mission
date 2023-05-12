@@ -43,7 +43,7 @@ class Edge(object):
         return hash(vertex1) + hash(vertex2)
     
     def __str__(self):
-        return "Edge " + str(self.vertex1) + " " + str(self.vertex2) + " Weight-" + str(self.weight)
+        return f"Edge {str(self.vertex1)} {str(self.vertex2)} Weight-{str(self.weight)}"
 
     def __repr__(self):
         return self.__str__()
@@ -69,7 +69,7 @@ class Vertex(object):
         return hash(self.id)
 
     def __str__(self):
-        return str("Vertex-" + str(self.id))
+        return str(f"Vertex-{str(self.id)}")
 
     def __repr__(self):
         return self.__str__();
@@ -90,7 +90,7 @@ if __name__ == '__main__':
         print(edge)
 
     for vertex in g.all_vertex:
-        print("Vertex " + str(g.all_vertex[vertex]))
+        print(f"Vertex {str(g.all_vertex[vertex])}")
         for edge in g.all_vertex[vertex].edges:
-            print("Edge " + str(edge))
+            print(f"Edge {str(edge)}")
 

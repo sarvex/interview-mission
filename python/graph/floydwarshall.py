@@ -11,21 +11,14 @@ class NegativeWeightCycleException(Exception):
 def all_pair_shortest_path(distance_matrix):
 
     size = len(distance_matrix)
-    distance = [[0 for x in range(size)]
-                for x in range (size)]
-    
-    path = [[0 for x in range(size)]
-                for x in range (size)]
+    distance = [[0 for _ in range(size)] for _ in range (size)]
+
+    path = [[0 for _ in range(size)] for _ in range (size)]
 
     for i in range(size):
         for j in range(size):
             distance[i][j] = distance_matrix[i][j]
-            if distance_matrix[i][j] != INF and i != j:
-                path[i][j] = i
-            else:
-                path[i][j] = -1
-
-
+            path[i][j] = i if distance_matrix[i][j] != INF and i != j else -1
     for k in range(size):
         for i in range(size):
             for j in range(size):
@@ -43,8 +36,7 @@ def all_pair_shortest_path(distance_matrix):
     return (distance, path)
 
 def print_path(path, start, end):
-    stack = []
-    stack.append(end)
+    stack = [end]
     while True:
         end = path[start][end]
         if end == -1:

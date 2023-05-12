@@ -1,6 +1,6 @@
 def create_segment_tree(input):
     size = next_power_of_2(len(input));
-    segment_tree = [0 for x in range(2*size - 1)]
+    segment_tree = [0 for _ in range(2*size - 1)]
     construct_tree(segment_tree, input, 0, len(input) - 1, 0)
     return segment_tree
 

@@ -15,8 +15,7 @@ def max_product(input):
             t = max_ending
             max_ending = max(min_ending*i, 1)
             min_ending = t * i
-        if max_so_far < max_ending:
-            max_so_far = max_ending
+        max_so_far = max(max_so_far, max_ending)
     return max_so_far
 
 if __name__ == '__main__':

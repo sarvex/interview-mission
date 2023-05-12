@@ -9,9 +9,11 @@ def pattern_matching(text, pattern):
     text_hash = create_hash(text, m - 1)
 
     for i in range(1, n - m + 2):
-        if pattern_hash == text_hash:
-            if check_equal(text[i-1:i+m-1], pattern[0:]) is True:
-                return i - 1;
+        if (
+            pattern_hash == text_hash
+            and check_equal(text[i - 1 : i + m - 1], pattern[:]) is True
+        ):
+            return i - 1;
         if i < n - m + 1:    
             text_hash = recalculate_hash(text, i-1, i+m-1, text_hash, m)
     return -1;
@@ -21,10 +23,7 @@ def check_equal(str1, str2):
         return False;
     i = 0
     j = 0
-    for i, j in zip(str1, str2):
-        if i != j:
-            return False;
-    return True
+    return all(i == j for i, j in zip(str1, str2))
     
 def create_hash(input, end):
     hash = 0

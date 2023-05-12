@@ -6,9 +6,8 @@ def rearrange(input):
         if is_less:
             if input[i] > input[i+1]:
                 swap(input, i, i+1)
-        else:
-            if input[i] < input[i+1]:
-                swap(input, i, i+1)
+        elif input[i] < input[i+1]:
+            swap(input, i, i+1)
         is_less = not is_less
 
 def swap(input, i, j):

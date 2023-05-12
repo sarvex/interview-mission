@@ -33,15 +33,13 @@ def num_bst(num_nodes):
 
 
 def num_bst_recursive(num_nodes):
-    if num_nodes == 0 or num_nodes == 1:
+    if num_nodes in [0, 1]:
         return 1
 
-    result = 0
-
-    for root in range(1, num_nodes + 1):
-        result += num_bst_recursive(root - 1) * num_bst_recursive(num_nodes - root)
-
-    return result
+    return sum(
+        num_bst_recursive(root - 1) * num_bst_recursive(num_nodes - root)
+        for root in range(1, num_nodes + 1)
+    )
 
 
 if __name__ == '__main__':

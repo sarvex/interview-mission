@@ -4,14 +4,11 @@
 from graph import *
 
 def has_cycle(graph):
-    white = set()
     gray = set()
     black = set()
 
-    for vertex in graph.all_vertex.values():
-        white.add(vertex)
-
-    while len(white) > 0:
+    white = set(graph.all_vertex.values())
+    while white:
         current = next(iter(white))       
         if dfs(current, white, gray, black) == True:
             return True

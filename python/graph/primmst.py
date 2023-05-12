@@ -33,10 +33,7 @@ def minimum_spanning_tree(graph):
 
 
 def get_other_vertex_for_edge(vertex, edge):
-    if edge.vertex1.id == vertex.id:
-        return edge.vertex2
-    else:
-        return edge.vertex1
+    return edge.vertex2 if edge.vertex1.id == vertex.id else edge.vertex1
 
 if __name__ == '__main__':
     graph = Graph(False)

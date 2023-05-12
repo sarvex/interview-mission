@@ -32,10 +32,7 @@ def longest_palindromic_subsequence(given_string):
             col = row + substring_length - 1
 
             if given_string[row] == given_string[col]:
-                if string_length == 2:
-                    T[row][col] = 2
-                else:
-                    T[row][col] = 2 + T[row + 1][col - 1]
+                T[row][col] = 2 if string_length == 2 else 2 + T[row + 1][col - 1]
             else:
                 T[row][col] = max(T[row + 1][col], T[row][col - 1])
 
@@ -43,7 +40,7 @@ def longest_palindromic_subsequence(given_string):
 
 
 def palindromic_subsequence_recursive_helper(given_string, start_index, length):
-    if length == 0 or length == 1:
+    if length in [0, 1]:
         return length
 
     if given_string[start_index] == given_string[length - start_index - 1]:

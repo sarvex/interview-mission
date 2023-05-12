@@ -1,9 +1,7 @@
 # http://www.geeksforgeeks.org/minimum-number-of-swaps-required-for-arranging-pairs-adjacent-to-each-other/
 
 def find_minimum_swaps(input, pair):
-    index = {}
-    for i, val in enumerate(input):
-        index[val] = i
+    index = {val: i for i, val in enumerate(input)}
     return find_minimum_swaps_util(input, pair, index, 0)
 
 def find_minimum_swaps_util(input, pair, index, current):
@@ -16,21 +14,20 @@ def find_minimum_swaps_util(input, pair, index, current):
 
     if pv2 == v2:
         return find_minimum_swaps_util(input, pair, index, current + 2)
-    else:
-        idx1 = index.get(v1)
-        idx2 = index.get(v2)
-        idx3 = index.get(pair[v1])
-        idx4 = index.get(pair[v2])
+    idx1 = index.get(v1)
+    idx2 = index.get(v2)
+    idx3 = index.get(pair[v1])
+    idx4 = index.get(pair[v2])
 
-        swap(index, input, idx2, idx3)
-        val1 = find_minimum_swaps_util(input, pair, index, current+2)
-        swap(index, input, idx2, idx3)
+    swap(index, input, idx2, idx3)
+    val1 = find_minimum_swaps_util(input, pair, index, current+2)
+    swap(index, input, idx2, idx3)
 
-        swap(index, input, idx1, idx4)
-        val2 = find_minimum_swaps_util(input, pair, index, current+2)
-        swap(index, input, idx1, idx4)
+    swap(index, input, idx1, idx4)
+    val2 = find_minimum_swaps_util(input, pair, index, current+2)
+    swap(index, input, idx1, idx4)
 
-        return 1 + max(val1, val2)
+    return 1 + max(val1, val2)
         
 
 def swap(index, input, i, j):
@@ -42,13 +39,6 @@ def swap(index, input, i, j):
 
 if __name__ == '__main__':
     input = [3, 5, 6, 4, 1, 2]
-    pair = {}
-    pair[1] = 3
-    pair[3] = 1
-    pair[2] = 6
-    pair[6] = 2
-    pair[4] = 5
-    pair[5] = 4
-
+    pair = {1: 3, 3: 1, 2: 6, 6: 2, 4: 5, 5: 4}
     print(find_minimum_swaps(input, pair))
     

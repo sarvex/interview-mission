@@ -43,11 +43,7 @@ class BinaryTree:
 
         while head is not None:
             prev = head
-            if head.data < data:
-                head = head.right
-            else:
-                head = head.left
-
+            head = head.right if head.data < data else head.left
         if prev.data < data:
             prev.right = n
         else:

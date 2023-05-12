@@ -39,7 +39,7 @@ def word_break_recursive(given_string, dictionary):
         if string in dictionary:
             r = word_break_recursive(given_string[i + 1:], dictionary)
             if r is not None:
-                string += " " + r
+                string += f" {r}"
                 return string
     return None
 
@@ -86,7 +86,7 @@ def word_break_dp(given_string, dictionary):
 def is_word_break_possible(given_string, dictionary):
     """Returns if any word break is possible amongst the multiple word breaks in the sentence."""
 
-    DP = dict()
+    DP = {}
     max_word_length = len(max(dictionary, key=len))
     return is_word_break_possible_recursive_helper(given_string, dictionary, 0, max_word_length, DP)
 
@@ -135,7 +135,7 @@ def all_possible_word_break_helper(given_string, dictionary, start, max_word_len
 
 
 def all_possible_word_breaks(given_string, dictionary):
-    DP = dict()
+    DP = {}
     max_word_length = len(max(dictionary, key=len))
     return all_possible_word_break_helper(given_string, dictionary, 0, max_word_length, DP)
 

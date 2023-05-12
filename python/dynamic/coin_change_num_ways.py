@@ -26,13 +26,9 @@ def coin_changing_num_ways(coins, total):
 
     for i in range(rows):
         for j in range(cols):
-            if (i - 1) < 0:
+            if i < 1:
                 continue
-            if j < coins[i]:
-                T[i][j] = T[i - 1][j]
-            else:
-                T[i][j] = T[i - 1][j] + T[i][j - coins[i]]
-
+            T[i][j] = T[i - 1][j] if j < coins[i] else T[i - 1][j] + T[i][j - coins[i]]
     return T[rows - 1][cols - 1]
 
 
@@ -65,7 +61,7 @@ def print_coin_changes_recursive(coins, total, results_stack, pos):
 
 
 def print_coin_changes(coins, total):
-    print_coin_changes_recursive(coins, total, list(), 0)
+    print_coin_changes_recursive(coins, total, [], 0)
 
 
 if __name__ == '__main__':

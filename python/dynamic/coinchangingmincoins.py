@@ -56,10 +56,9 @@ def min_coins2(coins, total):
     for j in range(len(coins)):
         for i in range(1, cols):
             coin = coins[j]
-            if i >= coins[j]:
-                if T[i] > 1 + T[i - coin]:
-                    T[i] = 1 + T[i - coin]
-                    R[i] = j
+            if i >= coin and T[i] > 1 + T[i - coin]:
+                T[i] = 1 + T[i - coin]
+                R[i] = j
 
     print_coins(R, coins)
     return T[cols - 1]
@@ -92,4 +91,4 @@ if __name__ == '__main__':
     expected = 2
     assert expected == min_coins(coins, total)
     assert expected == min_coins2(coins, total)
-    assert expected == min_coins_top_down(coins, total, dict())
+    assert expected == min_coins_top_down(coins, total, {})

@@ -34,7 +34,11 @@ def min_cost_bst(input_array, freq):
             T[start][end] = float("inf")
             total = sum(freq[start:end + 1])
             for k in range(start, end + 1):
-                val = total + (0 if k - 1 < 0 else T[start][k - 1]) + (0 if k + 1 > end else T[k + 1][end])
+                val = (
+                    total
+                    + (0 if k < 1 else T[start][k - 1])
+                    + (0 if k + 1 > end else T[k + 1][end])
+                )
                 T[start][end] = min(val, T[start][end])
 
     return T[0][-1]

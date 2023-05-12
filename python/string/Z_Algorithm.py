@@ -7,7 +7,7 @@
 #Link to theory: http://www.geeksforgeeks.org/z-algorithm-linear-time-pattern-searching-algorithm/
 
 def z_algo(arr):
-    z = [0 for i in range(len(arr))]
+    z = [0 for _ in range(len(arr))]
     left , right = 0 , 0
     for k in range(1 , len(arr)):
         if k > right:

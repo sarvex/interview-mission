@@ -14,33 +14,31 @@ def max_flow(capacity, source, sink):
         augmented_path = []
         v = sink
         flow = sys.maxsize
-        while not v == source:
+        while v != source:
             augmented_path.append(v)
             u = parent[v]
-            if flow > residual_capacity[u][v]:
-                flow = residual_capacity[u][v]
+            flow = min(flow, residual_capacity[u][v])
             v = u
         augmented_path.append(source)
         augmented_paths.append(augmented_path[::-1])
         max_flow += flow
 
         v = sink
-        while not v == source:
-             u = parent[v]
-             residual_capacity[u][v] -= flow
-             residual_capacity[v][u] += flow
-             v = u
+        while v != source:
+            u = parent[v]
+            residual_capacity[u][v] -= flow
+            residual_capacity[v][u] += flow
+            v = u
 
     print("Augmented path")
     print(augmented_paths)
     return max_flow
 
 def bfs(residual_capacity, source, sink):
-    visited = set()
     queue = Queue()
     parent = {}
     queue.put(source)
-    visited.add(source)
+    visited = {source}
     found_augmented_path = False
     while not queue.empty():
         u = queue.get()

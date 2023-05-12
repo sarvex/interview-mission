@@ -16,10 +16,15 @@ def rearrange(input):
                 right_rotate(input, i, index_of_next_positive)
 
 def find_next(input, start, isPositive):
-    for i in range(start, len(input)):
-        if (isPositive and input[i] >= 0) or (not isPositive and input[i] < 0):
-            return i;
-    return -1
+    return next(
+        (
+            i
+            for i in range(start, len(input))
+            if (isPositive and input[i] >= 0)
+            or (not isPositive and input[i] < 0)
+        ),
+        -1,
+    )
 
 def right_rotate(input, start, end):
     t = input[end]

@@ -18,7 +18,7 @@ Complexity
 
 
 def fibonacci_recursive(n):
-    if n == 0 or n == 1:
+    if n in [0, 1]:
         return n
 
     return fibonacci_recursive(n - 1) + fibonacci_recursive(n - 2)
@@ -27,10 +27,10 @@ def fibonacci_recursive(n):
 def fibonacci(n):
     n1, n2 = 0, 1
 
-    if n == n1 or n == n2:
+    if n in [n1, n2]:
         return n
 
-    for i in range(2, n + 1):
+    for _ in range(2, n + 1):
         n1, n2 = n2, n1 + n2
 
     return n2

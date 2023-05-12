@@ -42,11 +42,7 @@ def find_max_depth(n):
         return 0
     left_height = find_max_depth(n.left)
     right_height = find_max_depth(n.right)
-    if left_height > right_height:
-        result = left_height + 1
-    else:
-        result = right_height + 1
-    return result
+    return left_height + 1 if left_height > right_height else right_height + 1
 
 
 if __name__ == '__main__':
